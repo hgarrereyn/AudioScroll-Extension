@@ -1,4 +1,27 @@
-console.log("doppler injected");
+/*
+
+Original work Copyright (C) 2015 by Daniel Rapp
+Modified work Copyright (C) 2015 by Harrison Green
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in
+all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+THE SOFTWARE.
+
+*/
 
 window.doppler = (function() {
   var AuContext = (window.AudioContext ||
@@ -12,7 +35,6 @@ window.doppler = (function() {
   // This is just preliminary, we'll actually do a quick scan
   // (as suggested in the paper) to optimize this.
   var freq = 20000;
-  var started = false;
 
   // See paper for this particular choice of frequencies
   var relevantFreqWindow = 33;
@@ -100,13 +122,10 @@ window.doppler = (function() {
     mic.connect(analyser);
 
     // Doppler tone
-    if (!started){
-      osc.frequency.value = freq;
-      osc.type = osc.SINE;
-      osc.start(0);
-      osc.connect(ctx.destination);
-      started = true;
-    }
+    osc.frequency.value = freq;
+    osc.type = osc.SINE;
+    osc.start(0);
+    osc.connect(ctx.destination);
 
     // There seems to be some initial "warm-up" period
     // where all frequencies are significantly louder.
@@ -130,6 +149,8 @@ window.doppler = (function() {
     },
     stop: function () {
       clearInterval(readMicInterval);
+      osc.stop();
+      osc = ctx.createOscillator();
     }
   }
 })(window, document);

@@ -12,19 +12,19 @@ chrome.browserAction.onClicked.addListener(function() {
                     chrome.tabs.executeScript(tab.id, {code: "doppler.init(audioScroll);"}, function(response) {
                         started[tab.id] = true;
                         running[tab.id] = true;
-                        chrome.browserAction.setIcon({path: "icon48.png"});
+                        chrome.browserAction.setIcon({path: "icon38.png"});
                     });
                 });
             });
         } else if (running[tab.id]) {
             chrome.tabs.executeScript(tab.id, {code: "doppler.stop();"}, function(response) {
                 running[tab.id] = false;
-                chrome.browserAction.setIcon({path: "iconOff48.png"});
+                chrome.browserAction.setIcon({path: "iconOff38.png"});
             });
         } else if (!running[tab.id]){
             chrome.tabs.executeScript(tab.id, {code: "doppler.init(audioScroll);"}, function(response) {
                 running[tab.id] = true;
-                chrome.browserAction.setIcon({path: "icon48.png"});
+                chrome.browserAction.setIcon({path: "icon38.png"});
             });
         }
     });
@@ -47,8 +47,8 @@ chrome.tabs.onActivated.addListener(function(tabId, changeInfo, tab) {
 var checkIcon = function(tabId){
     console.log(running[tabId]);
     if (running[tabId] == undefined || !running[tabId]){
-        chrome.browserAction.setIcon({path: "iconOff48.png"});
+        chrome.browserAction.setIcon({path: "iconOff38.png"});
     } else {
-        chrome.browserAction.setIcon({path: "icon48.png"});   
+        chrome.browserAction.setIcon({path: "icon38.png"});   
     }
 }
