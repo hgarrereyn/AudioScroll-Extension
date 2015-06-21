@@ -1,0 +1,22 @@
+{
+    "manifest_version": 2,
+ 
+    "name": "AudioScroll Extension",
+    "description": "Scroll the page using hand gestures that are detected by a doppler speaker/microphone process",
+    "version": "1.0",
+ 
+    "icons" : {
+        "16" : "icon16.png",
+        "48" : "icon48.png",
+        "128" : "icon128.png"
+    },
+    "browser_action": {
+        "default_icon": "iconOff48.png"
+    },
+    "permissions": [
+        "activeTab"
+    ],
+    "background": {
+        "scripts": ["inject.js"]   
+    }
+}
