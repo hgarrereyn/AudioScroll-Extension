@@ -2,8 +2,10 @@
     "manifest_version": 2,
  
     "name": "AudioScroll Extension",
+    "short_name": "AudioScroll",
+    "author": "Harrison Green",
     "description": "Scroll the page using hand gestures that are detected by a doppler speaker/microphone process",
-    "version": "1.0",
+    "version": "1.0.0",
  
     "icons" : {
         "16" : "icon16.png",

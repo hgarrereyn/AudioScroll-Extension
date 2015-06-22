@@ -145,7 +145,7 @@ window.doppler = (function() {
       navigator.getUserMedia_ = (navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia || navigator.msGetUserMedia);
       navigator.getUserMedia_({ audio: { optional: [{ echoCancellation: false }] } }, function(stream) {
         handleMic(stream, readMic, callback);
-      }, function() { console.log('Error!') });
+      }, function() { alert('Please allow access to the microphone') });
     },
     stop: function () {
       clearInterval(readMicInterval);

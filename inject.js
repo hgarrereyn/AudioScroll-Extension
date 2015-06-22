@@ -10,6 +10,7 @@ chrome.browserAction.onClicked.addListener(function() {
             chrome.tabs.executeScript(tab.id, {file: "doppler.js"}, function(e){
                 chrome.tabs.executeScript(tab.id, {file: "main.js"}, function(e){
                     chrome.tabs.executeScript(tab.id, {code: "doppler.init(audioScroll);"}, function(response) {
+                        console.log(response);
                         started[tab.id] = true;
                         running[tab.id] = true;
                         chrome.browserAction.setIcon({path: "icon38.png"});
