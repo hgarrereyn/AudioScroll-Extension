@@ -6,3 +6,6 @@ Once enabled on a chrome tab, a sine wave with a high frequency is emmitted. The
 
 # doppler.js
 The doppler.js library was created by Daniel Rapp and can be viewed on GitHub [here](https://github.com/DanielRapp/doppler). It has been slightly modified to allow for stopping and restarting.
+
+# Chrome extension
+Download the Chrome extension [here](https://chrome.google.com/webstore/detail/audioscroll-extension/nknlpaccngmmdfjcbjkccfmoimehdeli?hl=en-US&gl=US).
